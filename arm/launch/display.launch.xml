@@ -1,0 +1,21 @@
+<launch>
+  <let name="urdf_path"
+    value="$(find-pkg-share arm)/urdf/Assem1.urdf" />
+  <arg
+    name="model" />
+  <param
+    name="robot_description"
+    value="$(command 'xacro $(var urdf_path)')"/>
+  <node
+    name="joint_state_publisher_gui"
+    pkg="joint_state_publisher_gui"
+    type="joint_state_publisher_gui" />
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="robot_state_publisher" />
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"/>
+</launch>
