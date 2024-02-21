@@ -28,10 +28,18 @@ def generate_launch_description():
         executable="rviz2"
     )
 
+    #spawn = Node( 
+    #    package='ros_gz_sim', 
+    #    executable='create', 
+    #    arguments=[ '-name', 'my_bot', '-topic', 'robot_description', ], 
+    #    output='screen'
+    #)
+
 
     return LaunchDescription([
         robot_state_publisher_node,
         joint_state_publisher_gui_node,
-        rviz2_node
+        rviz2_node,
+        #spawn
 
     ])
