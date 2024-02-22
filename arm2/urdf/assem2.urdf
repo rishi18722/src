@@ -29,7 +29,7 @@
           filename="package://arm2/meshes/base_link.STL" />
       </geometry>
       <material
-        name="">
+        name="Gazebo/Green">
         <color
           rgba="0.6 0.6 0.6 1" />
       </material>
@@ -69,7 +69,7 @@
           filename="package://arm2/meshes/link1.STL" />
       </geometry>
       <material
-        name="">
+        name="Gazebo/Red">
         <color
           rgba="0.66667 0.69804 0.76863 1" />
       </material>
@@ -122,7 +122,7 @@
           filename="package://arm2/meshes/link2.STL" />
       </geometry>
       <material
-        name="">
+        name="Gazebo/Blue">
         <color
           rgba="0.898039215686275 0.898039215686275 0.898039215686275 1" />
       </material>
@@ -175,7 +175,7 @@
           filename="package://arm2/meshes/link3.STL" />
       </geometry>
       <material
-        name="">
+        name="Gazebo/Green">
         <color
           rgba="0.666666666666667 0.698039215686274 0.768627450980392 1" />
       </material>
@@ -228,7 +228,7 @@
           filename="package://arm2/meshes/link4.STL" />
       </geometry>
       <material
-        name="">
+        name="Gazebo/Green">
         <color
           rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
@@ -281,7 +281,7 @@
           filename="package://arm2/meshes/link5.STL" />
       </geometry>
       <material
-        name="">
+        name="Gazebo/Green">
         <color
           rgba="0.666666666666667 0.698039215686274 0.768627450980392 1" />
       </material>
@@ -334,7 +334,7 @@
           filename="package://arm2/meshes/link6.STL" />
       </geometry>
       <material
-        name="">
+        name="Gazebo/Green">
         <color
           rgba="0.666666666666667 0.698039215686274 0.768627450980392 1" />
       </material>
@@ -387,7 +387,7 @@
           filename="package://arm2/meshes/link7.STL" />
       </geometry>
       <material
-        name="">
+        name="Gazebo/Green">
         <color
           rgba="0.666666666666667 0.698039215686274 0.768627450980392 1" />
       </material>
