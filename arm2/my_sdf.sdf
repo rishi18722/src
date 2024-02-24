@@ -1,0 +1,542 @@
+<?xml version="1.0"?>
+<sdf version='1.7'>
+  <world name="default">
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+  
+    <model name='arm2'>
+      <script>
+        <loop>true</loop>
+        <delay_start>1.00000</delay_start>
+        <auto_start>true</auto_start>
+      </script>
+      <link name='base_link'>
+        <inertial>
+          <pose>-0 0 0.039627 0 -0 0</pose>
+          <mass>5.5104</mass>
+          <inertia>
+            <ixx>0.032533</ixx>
+            <ixy>5.7234e-17</ixy>
+            <ixz>1.7979e-18</ixz>
+            <iyy>0.032533</iyy>
+            <iyz>-4.7415e-18</iyz>
+            <izz>0.058905</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://arm2/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://arm2/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <joint name='joint1' type='revolute'>
+        <pose relative_to='base_link'>0 0 0.085 1.5708 -0 -0.74673</pose>
+        <parent>base_link</parent>
+        <child>link1</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link1'>
+        <pose relative_to='joint1'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.056315 0.081396 0.002397 0 -0 0</pose>
+          <mass>2.2549</mass>
+          <inertia>
+            <ixx>0.011608</ixx>
+            <ixy>0.0088797</ixy>
+            <ixz>0.00040169</ixz>
+            <iyy>0.01588</iyy>
+            <iyz>-0.00035105</iyz>
+            <izz>0.023156</izz>
+          </inertia>
+        </inertial>
+        <collision name='link1_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://arm2/meshes/link1.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link1_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://arm2/meshes/link1.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <joint name='joint2' type='revolute'>
+        <pose relative_to='link1'>-0.15 0.16 0 -1.5708 -0 -2.4278</pose>
+        <parent>link1</parent>
+        <child>link2</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link2'>
+        <pose relative_to='joint2'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.142664 0.035223 0.00806 0 -0 0</pose>
+          <mass>0.920714</mass>
+          <inertia>
+            <ixx>0.000614867</ixx>
+            <ixy>-7.16276e-05</ixy>
+            <ixz>0.000152423</ixz>
+            <iyy>0.0182053</iyy>
+            <iyz>3.03732e-05</iyz>
+            <izz>0.0178613</izz>
+          </inertia>
+        </inertial>
+        <collision name='link2_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://arm2/meshes/link2.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link2_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://arm2/meshes/link2.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <joint name='joint3' type='revolute'>
+        <pose relative_to='link2'>-0.35 0 0 1.5708 -1.0682 3.14159</pose>
+        <parent>link2</parent>
+        <child>link3</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link3'>
+        <pose relative_to='joint3'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.044617 0.039916 -0.026037 0 -0 0</pose>
+          <mass>1.43146</mass>
+          <inertia>
+            <ixx>0.00186637</ixx>
+            <ixy>0.000324747</ixy>
+            <ixz>-9.34135e-05</ixz>
+            <iyy>0.00807676</iyy>
+            <iyz>0.000112859</iyz>
+            <izz>0.00844555</izz>
+          </inertia>
+        </inertial>
+        <collision name='link3_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://arm2/meshes/link3.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link3_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://arm2/meshes/link3.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <joint name='joint4' type='revolute'>
+        <pose relative_to='link3'>-0.21294 0.045 -0.0275 -0.89378 0 0</pose>
+        <parent>link3</parent>
+        <child>link4</child>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link4'>
+        <pose relative_to='joint4'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.104023 0 0 0 -0 0</pose>
+          <mass>0.581435</mass>
+          <inertia>
+            <ixx>0.000596524</ixx>
+            <ixy>3.01808e-12</ixy>
+            <ixz>4.08717e-12</ixz>
+            <iyy>0.00158017</iyy>
+            <iyz>-2.2891e-10</iyz>
+            <izz>0.00140635</izz>
+          </inertia>
+        </inertial>
+        <collision name='link4_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://arm2/meshes/link4.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link4_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://arm2/meshes/link4.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <joint name='joint5' type='revolute'>
+        <pose relative_to='link4'>-0.14806 0 0 -0.098993 1.57079 -3.14159</pose>
+        <parent>link4</parent>
+        <child>link5</child>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link5'>
+        <pose relative_to='joint5'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.000678 0 0.058962 0 -0 0</pose>
+          <mass>0.339145</mass>
+          <inertia>
+            <ixx>0.00035877</ixx>
+            <ixy>1.35525e-20</ixy>
+            <ixz>-3.56576e-06</ixz>
+            <iyy>0.000355541</iyy>
+            <iyz>-1.28749e-19</iyz>
+            <izz>0.000248853</izz>
+          </inertia>
+        </inertial>
+        <collision name='link5_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://arm2/meshes/link5.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link5_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://arm2/meshes/link5.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <joint name='joint6' type='revolute'>
+        <pose relative_to='link5'>-0.0005 0 0.068288 -2.45515 1.57079 -3.14159</pose>
+        <parent>link5</parent>
+        <child>link6</child>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link6'>
+        <pose relative_to='joint6'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.041997 -0 0 0 -0 0</pose>
+          <mass>0.0762575</mass>
+          <inertia>
+            <ixx>3.99526e-05</ixx>
+            <ixy>-9.52912e-21</ixy>
+            <ixz>-1.86347e-20</ixz>
+            <iyy>3.7956e-05</iyy>
+            <iyz>6.35275e-21</iyz>
+            <izz>3.20288e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='link6_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://arm2/meshes/link6.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link6_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://arm2/meshes/link6.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <joint name='joint7' type='revolute'>
+        <pose relative_to='link6'>-0.059344 0 -0.040132 1.35233 -0 1.5708</pose>
+        <parent>link6</parent>
+        <child>link7</child>
+        <axis>
+          <xyz>1 0 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link7'>
+        <pose relative_to='joint7'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.000172 -0.047794 -0.035727 0 -0 0</pose>
+          <mass>0.0459846</mass>
+          <inertia>
+            <ixx>6.09316e-05</ixx>
+            <ixy>-1.06736e-07</ixy>
+            <ixz>-4.5174e-08</ixz>
+            <iyy>1.95971e-05</iyy>
+            <iyz>-2.31067e-05</iyz>
+            <izz>4.38592e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='link7_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://arm2/meshes/link7.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link7_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://arm2/meshes/link7.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <plugin
+        filename="libignition-gazebo-joint-position-controller-system"
+        name="ignition::gazebo::systems::JointPositionController">
+
+
+        <!-- ARM 0 JOINTS -->
+        <joint_name>joint1</joint_name>
+        <topic>joint1</topic>
+        <p_gain>1</p_gain>
+        <i_gain>0.1</i_gain>
+        <d_gain>0.01</d_gain>
+        <i_max>1</i_max>
+        <i_min>-1</i_min>
+        <cmd_max>1000</cmd_max>
+        <cmd_min>-1000</cmd_min>
+
+
+        <joint_name>joint2</joint_name>
+        <topic>joint2</topic>
+        <p_gain>1</p_gain>
+        <i_gain>0.1</i_gain>
+        <d_gain>0.01</d_gain>
+        <i_max>1</i_max>
+        <i_min>-1</i_min>
+        <cmd_max>1000</cmd_max>
+        <cmd_min>-1000</cmd_min>
+
+
+        <joint_name>joint3</joint_name>
+        <topic>joint3</topic>
+        <p_gain>1</p_gain>
+        <i_gain>0.1</i_gain>
+        <d_gain>0.01</d_gain>
+        <i_max>1</i_max>
+        <i_min>-1</i_min>
+        <cmd_max>1000</cmd_max>
+        <cmd_min>-1000</cmd_min>
+
+        <joint_name>joint4</joint_name>
+        <topic>joint4</topic>
+        <p_gain>1</p_gain>
+        <i_gain>0.1</i_gain>
+        <d_gain>0.01</d_gain>
+        <i_max>1</i_max>
+        <i_min>-1</i_min>
+        <cmd_max>1000</cmd_max>
+        <cmd_min>-1000</cmd_min>
+
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++ -->
+
+
+        <!-- ARM 0 JOINTS -->
+        <joint_name>joint5</joint_name>
+        <topic>joint5</topic>
+        <p_gain>1</p_gain>
+        <i_gain>0.1</i_gain>
+        <d_gain>0.01</d_gain>
+        <i_max>1</i_max>
+        <i_min>-1</i_min>
+        <cmd_max>1000</cmd_max>
+        <cmd_min>-1000</cmd_min>
+
+        <joint_name>joint6</joint_name>
+        <topic>joint6</topic>
+        <p_gain>1</p_gain>
+        <i_gain>0.1</i_gain>
+        <d_gain>0.01</d_gain>
+        <i_max>1</i_max>
+        <i_min>-1</i_min>
+        <cmd_max>1000</cmd_max>
+        <cmd_min>-1000</cmd_min>
+
+        <joint_name>joint7</joint_name>
+        <topic>joint7</topic>
+        <p_gain>1</p_gain>
+        <i_gain>0.1</i_gain>
+        <d_gain>0.01</d_gain>
+        <i_max>1</i_max>
+        <i_min>-1</i_min>
+        <cmd_max>1000</cmd_max>
+        <cmd_min>-1000</cmd_min>
+
+
+      </plugin>
+    </model>
+    <plugin
+      filename="ignition-gazebo-physics-system"
+      name="ignition::gazebo::systems::Physics">
+    </plugin>
+    <plugin
+      filename="ignition-gazebo-scene-broadcaster-system"
+      name="ignition::gazebo::systems::SceneBroadcaster">
+    </plugin>
+    <plugin filename="gz-sim-joint-state-publisher-system"
+      name="gz::sim::systems::JointStatePublisher">
+      <topic>joint_states</topic> <!--from <ros><remapping> -->
+      <joint_name>joint1</joint_name>
+      <joint_name>joint2</joint_name>
+      <joint_name>joint3</joint_name>
+      <joint_name>joint4</joint_name>
+      <joint_name>joint5</joint_name>
+      <joint_name>joint6</joint_name>
+      <joint_name>joint7</joint_name>
+    </plugin>
+  </world>
+</sdf>
